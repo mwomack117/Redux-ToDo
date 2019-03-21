@@ -1,0 +1,24 @@
+{
+  "name": "redux-todo",
+  "version": "1.0.0",
+  "description": "TODO MERN redux practice",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mwomack117/Redux-ToDo.git"
+  },
+  "author": "Michael Womack",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mwomack117/Redux-ToDo/issues"
+  },
+  "homepage": "https://github.com/mwomack117/Redux-ToDo#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "mongoose": "^5.4.19"
+  }
+}
