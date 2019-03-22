@@ -4,6 +4,9 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
+import Landing from "./components/layout/Landing";
+import NotFound from "./components/pages/NotFound";
+import AddTodo from "./components/todos/AddTodo";
 
 class App extends Component {
   render() {
@@ -11,9 +14,13 @@ class App extends Component {
       <Router>
         <div className="App">
           <Navbar />
-          <h1>Hello, Michael 🤚</h1>
-          <Footer />
+          <Switch>
+            <Route exact path="/" component={Landing} />
+            <Route exact path="/add" component={AddTodo} />
+            <Route component={NotFound} />
+          </Switch>
         </div>
+        <Footer />
       </Router>
     );
   }

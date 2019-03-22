@@ -16,7 +16,6 @@ class Navbar extends Component {
           >
             Mern ToDo App
           </Link>
-          >
         </div>
       </nav>
     );

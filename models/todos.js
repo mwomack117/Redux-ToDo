@@ -3,7 +3,11 @@ const Schema = mongoose.Schema;
 
 // Create our todo model
 const TodoSchema = new Schema({
-  task: {
+  todo: {
+    type: String,
+    required: true
+  },
+  importance: {
     type: String,
     required: true
   },

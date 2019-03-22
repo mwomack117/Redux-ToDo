@@ -13,12 +13,13 @@ router.get("/test", (req, res) => res.json({ msg: "Todos works" }));
 // @desc    Add task to todo list
 // @access  Public
 router.post("/", (req, res) => {
-  const newTask = new Todos({
-    task: req.body.task
+  const newTodo = new Todos({
+    todo: req.body.todo,
+    importance: req.body.importance
   });
-  newTask
+  newTodo
     .save()
-    .then(task => res.json(task))
+    .then(todo => res.json(todo))
     .catch(err => console.log(err));
 });
 
