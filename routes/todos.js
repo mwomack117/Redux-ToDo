@@ -23,6 +23,19 @@ router.post("/", (req, res) => {
     .catch(err => console.log(err));
 });
 
+// @route   GET api/todos
+// @desc    Get Todo List
+// @access  Public
+router.get("/", (req, res) => {
+  console.log("===========TODO LIST==========");
+  Todos.find({})
+    .then(todos => {
+      res.json(todos);
+      console.log(todos);
+    })
+    .catch(err => console.log(err));
+});
+
 // @route   DELETE api/todos/task/:id
 // @desc    Delete task from todo list
 // @access  Public

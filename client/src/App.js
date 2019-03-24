@@ -14,11 +14,13 @@ class App extends Component {
       <Router>
         <div className="App">
           <Navbar />
-          <Switch>
-            <Route exact path="/" component={Landing} />
-            <Route exact path="/add" component={AddTodo} />
-            <Route component={NotFound} />
-          </Switch>
+          <div className="container">
+            <Switch>
+              <Route exact path="/" component={Landing} />
+              <Route exact path="/add" component={AddTodo} />
+              <Route component={NotFound} />
+            </Switch>
+          </div>
         </div>
         <Footer />
       </Router>
