@@ -1,9 +1,67 @@
 import React, { Component } from "react";
+import classnames from "classnames";
+import axios from "axios";
+import RadioFormInput from "../common/RadioFormInput";
 
 class AddTodo extends Component {
   state = {
     todo: "",
-    importance: ""
+    importance: "",
+    errors: {}
+  };
+
+  onSubmit = e => {
+    e.preventDefault();
+
+    const { todo, importance } = this.state;
+
+    if (todo === "") {
+      this.setState({ errors: { todo: "Todo is required" } });
+      setTimeout(() => {
+        this.toggleError();
+      }, 3000);
+      return;
+    }
+    if (importance === "") {
+      this.setState({ errors: { importance: "Pick level of importance" } });
+      setTimeout(() => {
+        this.toggleError();
+      }, 3000);
+      return;
+    }
+
+    const newTodo = {
+      todo,
+      importance
+    };
+
+    axios
+      .post("/api/todos", newTodo)
+      .then(response => {
+        console.log(response);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+
+    // Clear State
+    this.setState({
+      todo: "",
+      importance: "",
+      errors: {}
+    });
+  };
+
+  toggleError() {
+    this.setState({ errors: {} });
+  }
+
+  onChange = e => this.setState({ [e.target.name]: e.target.value });
+
+  onChangeRadio = e => {
+    this.setState({
+      importance: e.target.value
+    });
   };
 
   render() {
@@ -20,99 +78,61 @@ class AddTodo extends Component {
             <div className="card" style={style}>
               <h3 className="card-title text-center mt-3">Add a todo</h3>
               <div className="card-body">
-                {/* <form>
-                    <div className="form-group row">
-                      <label htmlFor="name" className="col-form-label col-md-3">
-                        Todo
-                      </label>
-                      <div className="col-sm-10">
-                        <input
-                          type="text"
-                          className="form-control"
-                          placeholder="todo"
-                          name="todo"
-                          value={this.state.name}
-                        />
-                      </div>
-                    </div>
-
-                    
-                    <div class="form-group row">
-                      <div class="col-sm-10">
-                        <button type="submit" class="btn btn-primary">
-                          Sign in
-                        </button>
-                      </div>
-                    </div>
-                  </form> */}
-                <form>
-                  <div class="form-group row">
-                    <label for="inputEmail3" class="col-md-4 col-form-label">
-                      Email
-                    </label>
-                    <div class="col-md-8">
+                <form onSubmit={this.onSubmit}>
+                  <div className="form-group">
+                    <div>
                       <input
-                        type="email"
-                        class="form-control"
-                        id="inputEmail3"
-                        placeholder="Email"
+                        type="text"
+                        className={classnames("form-control", {
+                          "is-invalid": this.state.errors.todo
+                        })}
+                        placeholder="Add your todo"
+                        name="todo"
+                        value={this.state.name}
+                        onChange={this.onChange}
                       />
+                      {this.state.errors && (
+                        <div className="invalid-feedback">
+                          {this.state.errors.todo}
+                        </div>
+                      )}
                     </div>
                   </div>
 
-                  <fieldset class="form-group">
-                    <div class="row">
-                      <legend class="col-form-label col-md-4 pt-0">
-                        Importance
-                      </legend>
-                      <div class="col-md-8">
-                        <div class="form-check">
-                          <input
-                            class="form-check-input"
-                            type="radio"
-                            name="gridRadios"
-                            id="gridRadios1"
-                            value="option1"
-                          />
-                          <label class="form-check-label" for="gridRadios1">
-                            First radio
-                          </label>
-                        </div>
-                        <div class="form-check">
-                          <input
-                            class="form-check-input"
-                            type="radio"
-                            name="gridRadios"
-                            id="gridRadios2"
-                            value="option2"
-                          />
-                          <label class="form-check-label" for="gridRadios2">
-                            Second radio
-                          </label>
-                        </div>
-                        <div class="form-check disabled">
-                          <input
-                            class="form-check-input"
-                            type="radio"
-                            name="gridRadios"
-                            id="gridRadios3"
-                            value="option3"
-                          />
-                          <label class="form-check-label" for="gridRadios3">
-                            Third disabled radio
-                          </label>
-                        </div>
+                  <div className="form-group">
+                    <div>
+                      <legend className="form-label pt-0">Importance</legend>
+                      <div>
+                        <RadioFormInput
+                          type="radio"
+                          name="radio"
+                          onChange={this.onChangeRadio}
+                          value="Kinda Important"
+                        />
+                        <RadioFormInput
+                          type="radio"
+                          name="radio"
+                          onChange={this.onChangeRadio}
+                          value="Pretty Important"
+                        />
+                        <RadioFormInput
+                          type="radio"
+                          name="radio"
+                          onChange={this.onChangeRadio}
+                          value="VERY IMPORTANT!"
+                        />
+
+                        {this.state.errors && (
+                          <p className="text-danger">
+                            {this.state.errors.importance}
+                          </p>
+                        )}
                       </div>
                     </div>
-                  </fieldset>
-
-                  <div class="form-group row">
-                    <div class="col-sm-10">
-                      <button type="submit" class="btn btn-primary">
-                        Sign in
-                      </button>
-                    </div>
                   </div>
+                  <button type="submit" className="btn btn-primary btn-block">
+                    Sign in
+                  </button>
                 </form>
               </div>
             </div>

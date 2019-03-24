@@ -8,13 +8,12 @@ class Navbar extends Component {
         <div className="container">
           <Link
             style={{
-              fontFamily: "monospace",
               fontSize: "1.6em"
             }}
-            className="navbar-brand"
+            className="navbar-brand mr-auto"
             to="/"
           >
-            Mern ToDo App
+            Mern Todo App
           </Link>
         </div>
       </nav>

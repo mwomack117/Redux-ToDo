@@ -1,6 +1,6 @@
-/* .App {
-  text-align: center;
-} */
+.App {
+  font-family: "monospace";
+}
 
 .add-todo {
   position: relative;

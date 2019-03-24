@@ -21,6 +21,8 @@
   },
   "homepage": "https://github.com/mwomack117/Redux-ToDo#readme",
   "dependencies": {
+    "classnames": "^2.2.6",
+    "concurrently": "^4.1.0",
     "express": "^4.16.4",
     "mongoose": "^5.4.19"
   }
