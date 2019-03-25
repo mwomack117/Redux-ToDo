@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import classnames from "classnames";
 import axios from "axios";
 import RadioFormInput from "../common/RadioFormInput";
+import { connect } from "react-redux";
+import { addTodo } from "../../redux/actions/todoActions";
 
 class AddTodo extends Component {
   state = {
@@ -35,14 +37,16 @@ class AddTodo extends Component {
       importance
     };
 
-    axios
-      .post("/api/todos", newTodo)
-      .then(response => {
-        console.log(response);
-      })
-      .catch(error => {
-        console.log(error);
-      });
+    this.props.addTodo(newTodo);
+
+    // axios
+    //   .post("/api/todos", newTodo)
+    //   .then(response => {
+    //     console.log(response);
+    //   })
+    //   .catch(error => {
+    //     console.log(error);
+    //   });
 
     // Clear State
     this.setState({
@@ -143,4 +147,7 @@ class AddTodo extends Component {
   }
 }
 
-export default AddTodo;
+export default connect(
+  null,
+  { addTodo }
+)(AddTodo);

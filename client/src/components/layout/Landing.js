@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import Todo from "../todos/Todo";
 import axios from "axios";
+import Moment from "react-moment";
 
 class Landing extends Component {
   constructor(props) {
@@ -14,6 +15,7 @@ class Landing extends Component {
   componentDidMount() {
     axios.get("/api/todos").then(response => {
       this.setState({ todos: response.data });
+      console.log(response.data);
     });
   }
 
@@ -21,9 +23,9 @@ class Landing extends Component {
     const style = {
       textAlign: "center"
     };
-    const { todos } = this.state;
+
     return (
-      <React.Fragment>
+      <div>
         <div style={style}>
           <h1 className="mb-3">Hello, Michael 🤚</h1>
           <h3 className="mb-3">You look great today.</h3>
@@ -38,14 +40,14 @@ class Landing extends Component {
           <h1 className="display-4 mb-2">Todo List</h1>
           {this.state.todos.map(todo => (
             <Todo
-              // key={todos_id}
+              key={todo._id}
               todo={todo.todo}
               date={todo.date}
               importance={todo.importance}
             />
           ))}
         </div>
-      </React.Fragment>
+      </div>
     );
   }
 }

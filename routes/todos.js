@@ -40,9 +40,9 @@ router.get("/", (req, res) => {
 // @desc    Delete task from todo list
 // @access  Public
 router.delete("/task/:id", (req, res) => {
-  Todos.findOneAndDelete({ _id: req.params.id }).then(() =>
-    res.json({ success: true })
-  );
+  Todos.findByIdAndRemove(req.params.id)
+    .then(() => res.json({ success: true }))
+    .catch(err => console.log(err));
 });
 
 module.exports = router;
