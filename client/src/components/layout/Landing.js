@@ -2,28 +2,18 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import Todo from "../todos/Todo";
 import axios from "axios";
-import Moment from "react-moment";
+import { connect } from "react-redux";
+import { getTodos } from "../../redux/actions/todoActions";
 
 class Landing extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      todos: []
-    };
-  }
-
   componentDidMount() {
-    axios.get("/api/todos").then(response => {
-      this.setState({ todos: response.data });
-      console.log(response.data);
-    });
+    this.props.getTodos();
   }
 
   render() {
     const style = {
       textAlign: "center"
     };
-
     return (
       <div>
         <div style={style}>
@@ -38,10 +28,11 @@ class Landing extends Component {
         </div>
         <div>
           <h1 className="display-4 mb-2">Todo List</h1>
-          {this.state.todos.map(todo => (
+          {this.props.todos.todos.map(todo => (
             <Todo
               key={todo._id}
               todo={todo.todo}
+              id={todo._id}
               date={todo.date}
               importance={todo.importance}
             />
@@ -52,4 +43,11 @@ class Landing extends Component {
   }
 }
 
-export default Landing;
+const mapStateToProps = state => ({
+  todos: state.todos
+});
+
+export default connect(
+  mapStateToProps,
+  { getTodos }
+)(Landing);

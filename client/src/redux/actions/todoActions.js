@@ -9,15 +9,16 @@ export const addTodo = todo => async dispatch => {
   });
 };
 
-export const getTodos = () => async dispatch => {
-  const res = await axios.get("/api/todos");
-  dispatch({
-    type: GET_TODOS,
-    payload: res.data
-  });
+export const getTodos = () => dispatch => {
+  axios.get("/api/todos").then(res =>
+    dispatch({
+      type: GET_TODOS,
+      payload: res.data
+    })
+  );
 };
 
-export const deleteContact = id => async dispatch => {
+export const deleteTodo = id => async dispatch => {
   await axios.delete(`/api/todos/task/${id}`);
   dispatch({
     type: DELETE_TODO,

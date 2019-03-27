@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import classnames from "classnames";
-import axios from "axios";
 import RadioFormInput from "../common/RadioFormInput";
 import { connect } from "react-redux";
 import { addTodo } from "../../redux/actions/todoActions";
@@ -39,21 +38,15 @@ class AddTodo extends Component {
 
     this.props.addTodo(newTodo);
 
-    // axios
-    //   .post("/api/todos", newTodo)
-    //   .then(response => {
-    //     console.log(response);
-    //   })
-    //   .catch(error => {
-    //     console.log(error);
-    //   });
-
     // Clear State
     this.setState({
       todo: "",
       importance: "",
       errors: {}
     });
+
+    // Redirect back to landing page after todo successfully added
+    this.props.history.push("/");
   };
 
   toggleError() {
