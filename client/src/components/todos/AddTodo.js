@@ -3,6 +3,7 @@ import classnames from "classnames";
 import RadioFormInput from "../common/RadioFormInput";
 import { connect } from "react-redux";
 import { addTodo } from "../../redux/actions/todoActions";
+import { Link } from "react-router-dom";
 
 class AddTodo extends Component {
   state = {
@@ -63,7 +64,7 @@ class AddTodo extends Component {
 
   render() {
     const style = {
-      width: "70%",
+      width: "50%",
       margin: "0 auto",
       marginTop: "30px",
       opacity: "0.7"
@@ -72,8 +73,17 @@ class AddTodo extends Component {
       <div className="add-todo">
         <div className="dark-overlay">
           <div className="container">
+            <Link
+              to="/"
+              style={{ marginTop: "10px" }}
+              className="btn btn-sm btn-secondary"
+            >
+              <i className="fas fa-2x fa-arrow-alt-circle-left float-left back" />
+              Go Back
+            </Link>
             <div className="card" style={style}>
               <h3 className="card-title text-center mt-3">Add a todo</h3>
+
               <div className="card-body">
                 <form onSubmit={this.onSubmit}>
                   <div className="form-group">

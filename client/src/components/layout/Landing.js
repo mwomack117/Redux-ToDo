@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import Todo from "../todos/Todo";
-import axios from "axios";
 import { connect } from "react-redux";
 import { getTodos } from "../../redux/actions/todoActions";
 

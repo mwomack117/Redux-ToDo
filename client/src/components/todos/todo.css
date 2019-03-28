@@ -6,6 +6,10 @@ i {
   font-size: 40px;
 }
 
+.back {
+  color: white;
+}
+
 .importance {
   margin: auto 0;
   margin-left: 20px;
