@@ -1,4 +1,4 @@
-import { ADD_TODO, DELETE_TODO, GET_TODOS } from "./types";
+import { ADD_TODO, DELETE_TODO, GET_TODOS, TOGGLE_TODO } from "./types";
 import axios from "axios";
 
 export const addTodo = todo => async dispatch => {

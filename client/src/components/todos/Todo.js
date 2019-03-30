@@ -9,12 +9,13 @@ class Todo extends Component {
   render() {
     const { todo, importance, date } = this.props;
     const colorLevel = classnames("importance", {
-      "text-danger": importance === "VERY IMPORTANT!",
-      "text-warning": importance === "Pretty Important"
+      "text-danger font-weight-bold": importance === "VERY IMPORTANT!",
+      "text-warning": importance === "Pretty Important",
+      "text-muted": importance === "Kinda Important"
     });
     return (
       <div>
-        <div className="card mb-3" style={{ width: "70%", margin: "0 auto" }}>
+        <div className="card mb-3" style={{ width: "65%", margin: "0 auto" }}>
           <div className="card-header">
             <h2 className="text-primary">
               {todo}
@@ -26,7 +27,7 @@ class Todo extends Component {
             </h2>
           </div>
           <p className={colorLevel}>
-            {importance} Date Added: {moment(date).format("MMM do YY")}
+            {importance} Date Added: {moment(date).format("MMM do YYYY")}
           </p>
         </div>
       </div>
