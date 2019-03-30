@@ -73,14 +73,19 @@ class AddTodo extends Component {
       <div className="add-todo">
         <div className="dark-overlay">
           <div className="container">
-            <Link
-              to="/"
-              style={{ marginTop: "10px" }}
-              className="btn btn-sm btn-secondary"
-            >
-              <i className="fas fa-2x fa-arrow-alt-circle-left float-left back" />
-              Go Back
-            </Link>
+            <div className="row">
+              <div className="col-md-6">
+                <Link
+                  to="/"
+                  style={{ marginTop: "10px" }}
+                  className="btn btn-secondary"
+                >
+                  <i className="fas fa-arrow-circle-left text-primary" />
+                  Go Back
+                </Link>
+              </div>
+            </div>
+
             <div className="card" style={style}>
               <h3 className="card-title text-center mt-3">Add a todo</h3>
 

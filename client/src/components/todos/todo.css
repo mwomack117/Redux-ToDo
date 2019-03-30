@@ -1,9 +1,7 @@
 i {
   cursor: pointer;
-  float: right;
-  color: red;
   margin-right: 1rem;
-  font-size: 40px;
+  font-size: 25px;
 }
 
 .back {

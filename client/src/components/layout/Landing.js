@@ -22,11 +22,11 @@ class Landing extends Component {
             Ready to knock off some of these Todos!?!
           </h3>
           <Link to={"/add"}>
-            <button className="btn btn-dark btn-md">Add a ToDo</button>
+            <button className="btn btn-dark btn-md mb-4">Add a ToDo</button>
           </Link>
         </div>
-        <div>
-          <h1 className="display-4 mb-2">Todo List</h1>
+        <div style={{ marginBottom: "100px" }}>
+          <h1 className="display-4 mb-2 text-center text-primary">Todo List</h1>
           {this.props.todos.todos.map(todo => (
             <Todo
               key={todo._id}
