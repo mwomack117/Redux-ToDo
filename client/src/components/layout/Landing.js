@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import moment from "moment";
 import Todo from "../todos/Todo";
 import { connect } from "react-redux";
 import { getTodos } from "../../redux/actions/todoActions";
@@ -20,6 +21,10 @@ class Landing extends Component {
           <h3 className="mb-3">You look great today.</h3>
           <h3 className="lead mb-3">
             Ready to knock off some of these Todos!?!
+          </h3>
+          <h4>Today's Date:</h4>
+          <h3 className="text-primary">
+            {moment().format("MMMM Do YYYY, h:mm")}
           </h3>
           <Link to={"/add"}>
             <button className="btn btn-dark btn-md mb-4">Add a ToDo</button>

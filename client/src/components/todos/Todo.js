@@ -11,7 +11,7 @@ class Todo extends Component {
     const colorLevel = classnames("importance", {
       "text-danger font-weight-bold": importance === "VERY IMPORTANT!",
       "text-warning": importance === "Pretty Important",
-      "text-muted": importance === "Kinda Important"
+      "text-secondary": importance === "Kinda Important"
     });
     return (
       <div>
@@ -27,7 +27,10 @@ class Todo extends Component {
             </h2>
           </div>
           <p className={colorLevel}>
-            {importance} Date Added: {moment(date).format("MMM do YYYY")}
+            {importance}{" "}
+            <span className="text-dark font-weight-normal">
+              Added: {moment(date).format("MMM DD YYYY")}
+            </span>
           </p>
         </div>
       </div>
