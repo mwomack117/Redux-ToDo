@@ -1,6 +1,6 @@
 import React from "react";
 
-const RadioFormInput = ({ name, value, type, onChange, label }) => {
+const RadioFormInput = ({ name, value, type, onChange }) => {
   return (
     <div className="form-check">
       <input

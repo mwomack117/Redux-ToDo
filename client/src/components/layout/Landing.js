@@ -51,7 +51,4 @@ const mapStateToProps = state => ({
   todos: state.todos
 });
 
-export default connect(
-  mapStateToProps,
-  { getTodos }
-)(Landing);
+export default connect(mapStateToProps, { getTodos })(Landing);

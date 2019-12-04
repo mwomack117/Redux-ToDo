@@ -143,7 +143,7 @@ class AddTodo extends Component {
                     </div>
                   </div>
                   <button type="submit" className="btn btn-primary btn-block">
-                    Sign in
+                    Add
                   </button>
                 </form>
               </div>
@@ -155,7 +155,4 @@ class AddTodo extends Component {
   }
 }
 
-export default connect(
-  null,
-  { addTodo }
-)(AddTodo);
+export default connect(null, { addTodo })(AddTodo);

@@ -42,7 +42,4 @@ class Todo extends Component {
 //   todos: state.todos
 // });
 
-export default connect(
-  null,
-  { deleteTodo }
-)(Todo);
+export default connect(null, { deleteTodo })(Todo);

@@ -1,9 +1,4 @@
-import {
-  ADD_TODO,
-  GET_TODOS,
-  DELETE_TODO,
-  TOGGLE_TODO
-} from "../actions/types";
+import { ADD_TODO, GET_TODOS, DELETE_TODO } from "../actions/types";
 
 const initialState = {
   todos: []
